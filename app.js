@@ -35,17 +35,14 @@ app.post("/", (req, res) => {
 	
 	const dc="us9"
 	const listid="602f4e3b9b"
-	const apikey="1d97d1f262d6caf212bcd77d0942f525-us9"
 	
 	const url = "https://" + dc + ".api.mailchimp.com/3.0/lists/" + listid
 	console.log(url)
 	
-	const auth = 'apikey:' + apikey
-	
 	const options = {
 		method: 'POST',
-		auth: auth,
-		Authorization: auth
+		auth: 'apikey:4aefe46cc4e7e8693b90bcbbde089912-us9',
+		Authorization: 'apikey:4aefe46cc4e7e8693b90bcbbde089912-us9'
 	}
 	
 	const request = https.request(url, options, (response) => {
