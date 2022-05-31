@@ -51,11 +51,12 @@ app.post("/", (req, res) => {
 			res.sendFile(__dirname + "/success.html")
 		} else {
 			res.sendFile(__dirname + "/failure.html")
+			console.log(response)
 		}
 		
 		response.on('data', (data) => {
 			const parsedData = JSON.parse(data)
-			console.log(parsedData)
+			//console.log(parsedData)
 		})
 	})
 	request.write(jsonData)
@@ -65,9 +66,3 @@ app.post("/", (req, res) => {
 app.listen(process.env.PORT || 3000, () => {
 	console.log("Server running on port 3000")
 })
-
-
-// mailchimp
-// api key: 1d97d1f262d6caf212bcd77d0942f525-us9
-// audience list id: 602f4e3b9b
-

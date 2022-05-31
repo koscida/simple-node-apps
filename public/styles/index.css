@@ -1,8 +1,14 @@
 .wrapper {
 	height: 100vh;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center;
 }
 .wrapperSignup {
 	background-image: url("../images/background-purple_sparks_1920.jpg");
+}
+.wrapperSignup .overlay {
+	background: rgba(230, 230, 230, 0.3);
 }
 .wrapperSuccess {
 	background-image: url("../images/spectrum-lowpoly_1920.jpg");
@@ -17,7 +23,7 @@
 	background: rgba(175, 76, 91, 0.5);
 }
 
-.overlay {
-	background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+.wrapper .overlay {
 	border-radius: 1em;
+	padding: 5em 9em;
 }
