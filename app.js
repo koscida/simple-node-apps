@@ -1,66 +1,36 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-const request = require('request')
-const https = require('https')
-require('dotenv').config();
+var signup = require(__dirname+'/routes/signup.js');
+const ejs = require("ejs");
 
 const app = express()
 
+// parse request of body
 app.use(bodyParser.urlencoded({extended: true}))
+// use public static folder
 app.use(express.static('public'))
+// set view engine
+app.set('view engine', 'ejs');
 
-app.get("/", (req, res) => {
-	res.sendFile(__dirname + "/signup.html")
-})
+// build app options
+const apps = [
+	{
+		name: "Signup",
+		uri: "/signup"
+	}
+]
 
-app.post("/", (req, res) => {
-	const firstName = req.body.firstName
-	const lastName = req.body.lastName
-	const email = req.body.email
-	
-	const data = {
-		members: [
-			{
-				email_address: email,
-				email_type: 'html',
-				status: "subscribed",
-				merge_fields: {
-					FNAME: firstName,
-                	LNAME: lastName,
-				}
-			}
-		]
-	}
-	const jsonData = JSON.stringify(data)
-	console.log(jsonData)
-	
-	const url = "https://" + process.env.MAILCHIMP_DC + ".api.mailchimp.com/3.0/lists/" + process.env.MAILCHIMP_LISTID
-	const auth = 'apikey:' + process.env.MAILCHIMP_APIKEY
-	
-	const options = {
-		method: 'POST',
-		auth: auth,
-		Authorization: auth
-	}
-	
-	const request = https.request(url, options, (response) => {
-		
-		if(response.statusCode === 200) {
-			res.sendFile(__dirname + "/success.html")
-		} else {
-			res.sendFile(__dirname + "/failure.html")
-			console.log(response)
-		}
-		
-		response.on('data', (data) => {
-			const parsedData = JSON.parse(data)
-			//console.log(parsedData)
-		})
+// home route
+app.get('/', (req, res) => {
+	res.render('home', {
+		apps,
 	})
-	request.write(jsonData)
-	request.end()
 })
 
+// include the routers for each sub page
+app.use('/signup', signup);
+
+// listen
 app.listen(process.env.PORT || 3000, () => {
 	console.log("Server running on port 3000")
 })

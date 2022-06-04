@@ -1,0 +1,22 @@
+<%- include('./partials/header') -%>
+
+<div class="row my-md-5 my-2">
+	<h1>Home</h1>
+</div>
+
+<div class="row mb-2">
+	<% apps.forEach( app => { %>
+		<div class="col-3">
+			<div class="card">
+				<div class="card-body">
+					<h5 class="card-title">
+						<%= app.name %>
+					</h5>
+					<a href="<%= app.uri %>" class="btn btn-primary">Go</a>
+				</div>
+			</div>
+		</div>
+	<% }) %>
+</div>
+
+<%- include('./partials/footer') -%>
