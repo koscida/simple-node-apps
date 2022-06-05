@@ -1,7 +1,9 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-var signup = require(__dirname+'/routes/signup.js');
 const ejs = require("ejs");
+
+const newsletter = require(__dirname+'/routes/newsletter.js');
+const blog = require(__dirname+'/routes/blog.js');
 
 const app = express()
 
@@ -15,8 +17,12 @@ app.set('view engine', 'ejs');
 // build app options
 const apps = [
 	{
-		name: "Signup",
-		uri: "/signup"
+		name: "Newsletter",
+		uri: "/newsletter"
+	},
+	{
+		name: "Blog",
+		uri: "/blog"
 	}
 ]
 
@@ -28,7 +34,8 @@ app.get('/', (req, res) => {
 })
 
 // include the routers for each sub page
-app.use('/signup', signup);
+app.use('/newsletter', newsletter);
+app.use('/blog', blog);
 
 // listen
 app.listen(process.env.PORT || 3000, () => {

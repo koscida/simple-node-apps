@@ -1,0 +1,24 @@
+
+/* Layout */
+
+.navbar {
+	letter-spacing: 5px;
+}
+.navbar-nav  li a:hover {
+    color: plum !important;
+}
+
+.footer {
+	background-color: plum;
+}
+
+
+/* Posts */
+
+.postPreviewBody {
+	display: -webkit-box;
+    max-width: 100%;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}

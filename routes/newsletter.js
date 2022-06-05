@@ -5,7 +5,7 @@ const path = require('path');
 require('dotenv').config();
 
 router.get("/", (req, res) => {
-	res.sendFile(path.join(__dirname,"../","views/signup/signup.html"))
+	res.sendFile(path.join(__dirname,"../","views/newsletter/signup.html"))
 })
 
 router.post("/", (req, res) => {
@@ -41,9 +41,9 @@ router.post("/", (req, res) => {
 	const request = https.request(url, options, (response) => {
 		
 		if(response.statusCode === 200) {
-			res.sendFile(path.join(__dirname,"../","views/signup/success.html"))
+			res.sendFile(path.join(__dirname,"../","views/newsletter/success.html"))
 		} else {
-			res.sendFile(path.join(__dirname,"../","views/signup/failure.html"))
+			res.sendFile(path.join(__dirname,"../","views/newsletter/failure.html"))
 			console.log(response)
 		}
 		
