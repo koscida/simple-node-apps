@@ -2,6 +2,8 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const ejs = require("ejs");
 
+const apps = require(__dirname+'/appList.js');
+
 const newsletter = require(__dirname+'/routes/newsletter.js');
 const blog = require(__dirname+'/routes/blog.js');
 
@@ -14,22 +16,12 @@ app.use(express.static('public'))
 // set view engine
 app.set('view engine', 'ejs');
 
-// build app options
-const apps = [
-	{
-		name: "Newsletter",
-		uri: "/newsletter"
-	},
-	{
-		name: "Blog",
-		uri: "/blog"
-	}
-]
+const appList = apps.getAppList()
 
 // home route
 app.get('/', (req, res) => {
 	res.render('home', {
-		apps,
+		appList,
 	})
 })
 

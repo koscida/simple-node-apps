@@ -1,0 +1,54 @@
+<%- include('../header') -%>
+
+<!-- Custom -->
+<link rel="stylesheet" type="text/css" href="/styles/newsletter.css" />
+
+<%- include('../navigation') -%>
+
+<div
+	class="wrapper wrapperSignup bg-image p-5 text-center shadow-1-strong text-white"
+>
+	<div class="container h-100">
+		<div class="row h-100 justify-content-md-center align-items-center">
+			<form class="col-md-8 mx-md-auto overlay" method="post" action="/newsletter">
+				<div class="mb-5">
+					<h1>Subscribe to the Newsletter!</h1>
+				</div>
+
+				<div class="input-group input-group-lg mb-3">
+					<span class="input-group-text">Name</span>
+					<input
+						type="text"
+						aria-label="First name"
+						placeholder="First name"
+						class="form-control"
+						name="firstName"
+					/>
+					<input
+						type="text"
+						aria-label="Last name"
+						placeholder="Last name"
+						class="form-control"
+						name="lastName"
+					/>
+				</div>
+				<div class="input-group input-group-lg mb-3">
+					<span for="exampleInputEmail1" class="input-group-text"
+						>Email</span
+					>
+					<input
+						type="email"
+						class="form-control"
+						id="exampleInputEmail1"
+						name="email"
+					/>
+				</div>
+				<button class="btn btn-primary btn-lg" type="submit">
+					Subscribe!
+				</button>
+			</form>
+		</div>
+	</div>
+</div>
+
+<%- include('../footer') -%>

@@ -1,67 +1,29 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
+<%- include('header') -%>
+<%- include('navigation') -%>
 
-<head>
-	<meta charset="utf-8">
-	<title>Simple Node Apps</title>
-	<meta charset="utf-8">
-	<meta name="description" content="Koscida Simple Node Apps" />
+<div class="container">
 	
-	<!-- Bootstrap -->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-		integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous" />
-	
-	<!-- Custom -->
-	<link rel="stylesheet" type="text/css" href="styles/index.css" />
-</head>
+	<div class="row my-3">
+		<h1>Home</h1>
+		<p>Simple Node.js app examples</p>
+	</div>
 
-<body>
-
-	<nav class="navbar navbar-expand-lg navbar-dark">
-		<div class="container">
-			<a class="navbar-brand" href="/">Simple Node Apps</a>
-			<ul class="navbar-nav ms-auto">
-				<li class="nav-item" id="home">
-					<a class="nav-link"
-						href="https://koscida-simple-react-apps.herokuapp.com/">Simple-React-Apps</a>
-				</li>
-				<li class="nav-item" id="home">
-					<a class="nav-link" target="_blank"
-						href="https://brittanyannkos.com">BrittanyAnnKos.com</a>
-				</li>
-			</ul>
-		</div>
-	</nav>
-
-	<div class="container">
-
-		<div class="row my-3">
-			<h1>Home</h1>
-			<p>Simple Node.js app examples</p>
-		</div>
-
-		<div class="row mb-2">
-			<% apps.forEach( app => { %>
-				<div class="col-3">
-					<div class="card">
-						<div class="card-body">
-							<h5 class="card-title">
-								<%= app.name %>
-							</h5>
-							<a href="<%= app.uri %>" class="btn btn-primary">Go</a>
-						</div>
+	<div class="row mb-2">
+		<% appList.forEach( app => { %>
+			<div class="col-3">
+				<div class="card">
+					<div class="card-body">
+						<h5 class="card-title">
+							<%= app.name %>
+						</h5>
+						<p><%= app.description %></p>
+						<a href="<%= app.uri %>" class="btn btn-secondary">Open</a>
 					</div>
 				</div>
-			<% }) %>
-		</div>
-
+			</div>
+		<% }) %>
 	</div>
-	
-	<!-- Bootstrap -- JavaScript Bundle with Popper -->
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
-		crossorigin="anonymous"></script>
-	
-	</body>
-	
-	</html>
+
+</div>
+
+<%- include('footer') -%>

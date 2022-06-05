@@ -1,13 +1,26 @@
-<%- include('./partials/header') -%>
+<%- include('../header') -%>
 
-<div class="row my-md-5 my-2">
-	<h1>Contact</h1>
+<!-- Custom Blog CSS -->
+<link rel="stylesheet" href="/styles/blog.css" type="text/css">
+
+<%- include('../navigation') -%>
+
+<div id="BlogApp">
+
+	<%- include('./partials/header') -%>
+
+	<div class="row my-md-5 my-2">
+		<h1>Contact</h1>
+	</div>
+
+	<div class="row mb-2">
+		<p>
+			<%= content %>
+		</p>
+	</div>
+
+	<%- include('./partials/footer') -%>
+
 </div>
 
-<div class="row mb-2">
-	<p>
-		<%= content %>
-	</p>
-</div>
-
-<%- include('./partials/footer') -%>
+<%- include('../footer') -%>

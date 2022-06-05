@@ -1,14 +1,21 @@
 
 /* Layout */
 
-.navbar {
+body {
+	height: 100vh;
+}
+#BlogApp {
+	height: 100vh;
+}
+
+#BlogApp .navbar {
 	letter-spacing: 5px;
 }
-.navbar-nav  li a:hover {
+#BlogApp .navbar-nav  li a:hover {
     color: plum !important;
 }
 
-.footer {
+#BlogApp .footer {
 	background-color: plum;
 }
 
