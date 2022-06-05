@@ -1,0 +1,24 @@
+:root {
+	--purpleOG: #6d56b8;
+	--purple:hsla(254, 41%, 53%, 1);
+	--pinkOG: #c3407c;
+	--pink: hsla(333, 41%, 53%, 1);
+}
+
+.navbar {
+	background: var(--purple);
+	animation: pulse 60s infinite;
+}
+@keyframes pulse {
+	0% {
+		background: var(--purple);
+	}
+
+	50% {
+		background: var(--pink);
+	}
+
+	100% {
+		background: var(--purple);
+	}
+}
