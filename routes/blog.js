@@ -9,8 +9,8 @@ const contactContent = "(Contact) Scelerisque eleifend donec pretium vulputate s
 
 const posts = []
 
-router.get('/', (req, res) => {
-	res.redirect('home')
+router.get("/", (req, res) => {
+	res.redirect('/blog/home')
 })
 
 router.get('/home', (req, res) => {
