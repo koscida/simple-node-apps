@@ -8,16 +8,6 @@ require('dotenv').config();
 
 const router = express.Router()
 
-// const mongooseDB = "mongodb://localhost:27017/todoListDB"
-const mongooseDB = `mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@${process.env.MONGODB_CLUSTER}.mongodb.net/${process.env.MONGODB_DBNAME}?retryWrites=true&w=majority`
-mongoose.connect(mongooseDB)
-
-// test mongoose connection
-const db = mongoose.connection;
-db.on("error", console.error.bind(console, "connection error: "));
-db.once("open", function () {
-  console.log("Connected successfully");
-});
 
 // mongoose schema
 const itemsSchema = {

@@ -1,5 +1,10 @@
 appList = [
 	{
+		name: "Blog with DB",
+		uri: "/blogdb",
+		description: 'Update of Daily Blog. Posts persist with MongoDB',
+		display: true,
+	},{
 		name: "Todo List",
 		uri: "/todolist",
 		description: 'Create CRUD todo list and persist data with MongoDB Atlas Cloud',
