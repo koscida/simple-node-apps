@@ -5,6 +5,7 @@ require('dotenv').config();
 
 const router = express.Router()
 
+const path = "blogdb/"
 
 const homeStartingContent = "(Home) Lacus vel facilisis volutpat est velit egestas dui id ornare. Semper auctor neque vitae tempus quam. Sit amet cursus sit amet dictum sit amet justo. Viverra tellus in hac habitasse. Imperdiet proin fermentum leo vel orci porta. Donec ultrices tincidunt arcu non sodales neque sodales ut. Mattis molestie a iaculis at erat pellentesque adipiscing. Magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies. Adipiscing elit ut aliquam purus sit amet luctus venenatis lectus. Ultrices vitae auctor eu augue ut lectus arcu bibendum at. Odio euismod lacinia at quis risus sed vulputate odio ut. Cursus mattis molestie a iaculis at erat pellentesque adipiscing.";
 const aboutContent = "(About) Hac habitasse platea dictumst vestibulum rhoncus est pellentesque. Dictumst vestibulum rhoncus est pellentesque elit ullamcorper. Non diam phasellus vestibulum lorem sed. Platea dictumst quisque sagittis purus sit. Egestas sed sed risus pretium quam vulputate dignissim suspendisse. Mauris in aliquam sem fringilla. Semper risus in hendrerit gravida rutrum quisque non tellus orci. Amet massa vitae tortor condimentum lacinia quis vel eros. Enim ut tellus elementum sagittis vitae. Mauris ultrices eros in cursus turpis massa tincidunt dui.";
@@ -24,14 +25,15 @@ const Post = mongoose.model("Post", postSchema)
 
 
 router.get("/", (req, res) => {
-	res.redirect('/blog/home')
+	res.redirect(`/${path}home`)
 })
 
 router.get('/home', (req, res) => {
 	// get posts
-	List.find({}, (err, posts) => {
+	Post.find({}, (err, posts) => {
 		// render the posts
 		res.render('blog/home', {
+			path,
 			content: homeStartingContent,
 			posts,
 		})
@@ -39,28 +41,33 @@ router.get('/home', (req, res) => {
 })
 router.get('/about', (req, res) => {
 	res.render('blog/about', {
+		path,
 		content: aboutContent,
 	})
 })
 router.get('/contact', (req, res) => {
 	res.render('blog/contact', {
+		path,
 		content: contactContent,
 	})
 })
 router.get('/compose', (req, res) => {
-	res.render('blog/compose')
+	res.render('blog/compose',{
+		path,
+	})
 })
 router.get('/post/:key', (req, res) => {
 	const key = req.params.key
 	// get post
-	List.findOne({}, (err, post) => {
+	Post.findOne({}, (err, post) => {
 		// check if exists
 		post
 			? res.render('blog/post',{
+				path,
 				key,
 				post,
 			})
-			: res.redirect('/blog/home')
+			: res.redirect(`/${path}home`)
 	})
 })
 
@@ -85,7 +92,7 @@ router.post("/", (req, res) => {
 	})
 	post.save()
 	
-	res.redirect('/blog/home')
+	res.redirect(`/${path}home`)
 })
 
 module.exports = router
