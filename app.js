@@ -6,6 +6,7 @@ const apps = require(__dirname+'/appList.js');
 
 const newsletter = require(__dirname+'/routes/newsletter.js');
 const blog = require(__dirname+'/routes/blog.js');
+const todolist = require(__dirname+'/routes/todolist.js');
 
 const app = express()
 
@@ -28,6 +29,7 @@ app.get('/', (req, res) => {
 // include the routers for each sub page
 app.use('/newsletter', newsletter);
 app.use('/blog', blog);
+app.use('/todolist', todolist);
 
 // listen
 app.listen(process.env.PORT || 3000, () => {
