@@ -15,7 +15,6 @@ const contactContent = "(Contact) Scelerisque eleifend donec pretium vulputate s
 const postSchema = {
 	title: String, 
 	body: String,
-	key: String,
 	date: String
 }
 
@@ -56,15 +55,14 @@ router.get('/compose', (req, res) => {
 		path,
 	})
 })
-router.get('/post/:key', (req, res) => {
-	const key = req.params.key
+router.get('/post/:_id', (req, res) => {
+	const _id = req.params._id
 	// get post
-	Post.findOne({}, (err, post) => {
+	Post.findOne({_id}, (err, post) => {
 		// check if exists
 		post
 			? res.render('blog/post',{
 				path,
-				key,
 				post,
 			})
 			: res.redirect(`/${path}home`)
@@ -76,9 +74,6 @@ router.post("/", (req, res) => {
 	const title = req.body.postTitle
 	const body = req.body.postBody
 	
-	// create post name
-	const key = title.replace(/\s+/g, '-').toLowerCase();
-	
 	// create post date
 	const newDate = new Date()
 	const date = newDate.toLocaleString()
@@ -87,7 +82,6 @@ router.post("/", (req, res) => {
 	const post = new Post({
 		title, 
 		body,
-		key,
 		date
 	})
 	post.save()
